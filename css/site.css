@@ -111,7 +111,7 @@ body::before {
 }
 .site-header .wrap { display: flex; align-items: center; gap: 1rem 2rem; padding-block: 0.8rem; flex-wrap: wrap; }
 .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--font-display); font-stretch: 118%; font-weight: 850; font-size: 1.35rem; color: #fff; }
-.logo img { width: 34px; height: 34px; }
+.logo img { width: auto; height: 34px; }
 .site-nav { display: flex; align-items: center; gap: 0.35rem; margin-left: auto; flex-wrap: wrap; }
 .site-nav a {
 	text-decoration: none; font-weight: 600; font-size: 0.95rem;
@@ -195,7 +195,7 @@ body::before {
 /* Kenya strip */
 .kenya { background: var(--navy); color: rgba(255,255,255,0.84); }
 .kenya h2 { color: #fff; max-width: 18ch; }
-.kenya-grid { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.kenya-grid { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); gap: 1rem; }
 .kenya-grid div { background: var(--navy-2); border-radius: var(--radius); padding: 1.5rem; display: grid; gap: 0.5rem; align-content: start; }
 .kenya-grid h3 { color: #fff; font-size: 1.15rem; }
 .kenya-grid p { font-size: 0.97rem; }
