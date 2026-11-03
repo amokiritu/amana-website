@@ -3,475 +3,212 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Amana ERP</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Amana ERP keeps the books of a church, a school and the property they run in one place: giving, school fees, rent, spending and building projects, with M-Pesa and bank lines matched for you. Built on ERPNext, in Kenya shillings.">
-<meta property="og:title" content="Amana ERP">
-<meta property="og:description" content="The books of a church, a school and the property they run, in one place. Built on ERPNext for Kenyan organisations.">
-<meta property="og:image" content="https://amana-erp.com/images/today.png">
+<title>Amana</title>
+<meta name="description" content="Amana builds systems for Kenyan churches, schools, landlords and car import yards: M-Pesa, bank statements, SMS and proper accounts built in, in Kenya shillings.">
+<meta property="og:title" content="Amana: software for Kenyan organisations">
+<meta property="og:description" content="Systems for churches, schools, rental property and car import yards, with M-Pesa and proper accounts built in.">
+<meta property="og:image" content="https://amana-erp.com/images/church/today.webp">
 <meta property="og:url" content="https://amana-erp.com/">
 <meta property="og:type" content="website">
-<link rel="icon" href="images/amana.svg" type="image/svg+xml">
+<link rel="icon" href="/images/amana.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: a ledger page. Section labels sit in a narrow left column like an account
-   name column; the content runs in the wide column beside it. Stacks on phones. */
-:root {
-	--paper: #f5f7f9;
-	--sheet: #ffffff;
-	--ink: #13222e;
-	--muted: #546575;
-	--rule: #d9e1e8;
-	--trust: #1f5f8b;
-	--trust-ink: #ffffff;
-	--trust-soft: #e3eef6;
-	--matched: #1e7a4f;
-	--matched-soft: #e2f3ea;
-	--owed: #b4551f;
-	--font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-	--font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-	--font-figures: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-	--step-0: 1rem;
-	--step-1: 1.2rem;
-	--step-2: 1.6rem;
-	--step-3: clamp(2rem, 4.5vw, 3.1rem);
-	--wide: 72rem;
-	--label-col: 11rem;
-}
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) {
-		--paper: #0e171f;
-		--sheet: #15212b;
-		--ink: #e6edf2;
-		--muted: #9fb0bf;
-		--rule: #2a3a47;
-		--trust: #6fb0dd;
-		--trust-ink: #0b1620;
-		--trust-soft: #183447;
-		--matched: #5cc493;
-		--matched-soft: #173828;
-		--owed: #f0a070;
-		color-scheme: dark;
-	}
-}
-:root[data-theme="dark"] {
-	--paper: #0e171f;
-	--sheet: #15212b;
-	--ink: #e6edf2;
-	--muted: #9fb0bf;
-	--rule: #2a3a47;
-	--trust: #6fb0dd;
-	--trust-ink: #0b1620;
-	--trust-soft: #183447;
-	--matched: #5cc493;
-	--matched-soft: #173828;
-	--owed: #f0a070;
-	color-scheme: dark;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-	margin: 0;
-	background: var(--paper);
-	color: var(--ink);
-	font-family: var(--font-body);
-	font-size: var(--step-0);
-	line-height: 1.6;
-	-webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: var(--trust); }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--trust); outline-offset: 3px; border-radius: 4px; }
-h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
-p { margin: 0; }
-
-.wrap {
-	max-width: var(--wide);
-	margin-inline: auto;
-	padding-left: max(16px, env(safe-area-inset-left, 0px));
-	padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-
-/* Top bar */
-body::before {
-	content: "";
-	position: fixed;
-	inset: 0 0 auto;
-	height: env(safe-area-inset-top, 0px);
-	z-index: 10;
-	background: var(--paper);
-}
-.top {
-	position: sticky;
-	top: env(safe-area-inset-top, 0px);
-	z-index: 5;
-	background: var(--paper);
-	border-bottom: 1px solid var(--rule);
-}
-.top .wrap { display: flex; align-items: center; gap: 1.5rem; padding-block: 0.75rem; }
-.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; }
-.brand img { width: 32px; height: 32px; }
-.top nav { margin-left: auto; display: flex; gap: 1.25rem; align-items: center; }
-.top nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
-.top nav a:hover { color: var(--ink); }
-.top nav a.button { color: var(--trust-ink); }
-@media (max-width: 640px) { .top nav a.hide-small { display: none; } }
-
-.button {
-	display: inline-flex; align-items: center; gap: 0.5rem;
-	padding: 0.65rem 1.1rem; border-radius: 8px;
-	background: var(--trust); color: var(--trust-ink);
-	font-weight: 600; text-decoration: none; border: 1px solid var(--trust);
-}
-.button:hover { filter: brightness(1.08); }
-.button.plain { background: transparent; color: var(--trust); }
-.top .button { padding: 0.45rem 0.9rem; font-size: 0.95rem; }
-
-/* Hero */
-.hero .wrap {
-	display: grid;
-	grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-	gap: 3rem;
-	align-items: center;
-	padding-block: 4rem 3.5rem;
-}
-.word { font-family: var(--font-figures); font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; }
-.word b { color: var(--trust); font-weight: 500; }
-.hero h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.01em; }
-.hero .lede { margin-top: 1.25rem; font-size: var(--step-1); color: var(--muted); max-width: 34rem; }
-.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; align-items: center; }
-.phone { font-family: var(--font-figures); font-size: 1rem; color: var(--ink); user-select: all; }
-
-/* The bank line being read: the hero's picture */
-.reading {
-	background: var(--sheet);
-	border: 1px solid var(--rule);
-	border-radius: 12px;
-	overflow: hidden;
-	box-shadow: 0 18px 40px -24px rgba(19, 34, 46, 0.35);
-}
-.reading header {
-	display: flex; justify-content: space-between; gap: 1rem;
-	padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule);
-	font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
-}
-.line { padding: 1rem; display: grid; gap: 0.6rem; border-bottom: 1px solid var(--rule); }
-.line:last-child { border-bottom: 0; }
-.raw { font-family: var(--font-figures); font-size: 0.82rem; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
-.raw .amt { color: var(--ink); font-weight: 500; }
-.read { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.92rem; }
-.read::before { content: "→"; color: var(--muted); }
-.chip { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; background: var(--trust-soft); color: var(--trust); }
-.chip.ok { background: var(--matched-soft); color: var(--matched); }
-.read strong { font-weight: 600; }
-.read span.note { color: var(--muted); }
-
-/* Sections laid out like ledger rows */
-.section { border-top: 1px solid var(--rule); }
-.section > .wrap {
-	display: grid;
-	grid-template-columns: var(--label-col) minmax(0, 1fr);
-	gap: 2rem;
-	padding-block: 3.5rem;
-}
-.label {
-	font-family: var(--font-figures);
-	font-size: 0.8rem;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: var(--muted);
-	padding-top: 0.45rem;
-}
-.section h2 { font-size: var(--step-2); font-weight: 700; }
-.section .intro { margin-top: 0.75rem; color: var(--muted); max-width: 40rem; }
-@media (max-width: 800px) {
-	.hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 2.5rem; gap: 2rem; }
-	.section > .wrap { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; padding-block: 2.5rem; }
-}
-
-/* Parts */
-.parts { margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
-.part { background: var(--sheet); padding: 1.25rem; display: grid; gap: 0.4rem; align-content: start; }
-.part h3 { font-size: var(--step-1); font-weight: 700; }
-.part p { color: var(--muted); font-size: 0.95rem; }
-.part .tag { font-family: var(--font-figures); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--trust); }
-
-/* Screens */
-.tabs { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.tabs button {
-	font: inherit; font-size: 0.9rem; font-weight: 500;
-	padding: 0.4rem 0.85rem; border-radius: 999px; cursor: pointer;
-	background: transparent; color: var(--muted); border: 1px solid var(--rule);
-}
-.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.screen { margin-top: 1.25rem; }
-.screen figure { margin: 0; }
-.shot { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
-.screen figcaption { margin-top: 0.9rem; color: var(--muted); max-width: 44rem; }
-.screen figcaption b { color: var(--ink); font-weight: 600; }
-.sample-note { margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted); }
-
-/* Kenya list */
-.facts { margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 1.75rem 2.5rem; }
-.fact h3 { font-family: var(--font-body); font-size: var(--step-0); font-weight: 600; }
-.fact p { margin-top: 0.3rem; color: var(--muted); font-size: 0.95rem; }
-
-/* Steps */
-.steps { margin-top: 2rem; display: grid; gap: 0; list-style: none; padding: 0; counter-reset: step; max-width: 44rem; }
-.steps li { counter-increment: step; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--rule); }
-.steps li:first-child { border-top: 0; padding-top: 0; }
-.steps li::before { content: counter(step); font-family: var(--font-figures); font-weight: 500; color: var(--trust); font-size: 1.1rem; }
-.steps h3 { font-family: var(--font-body); font-size: var(--step-0); font-weight: 600; }
-.steps p { margin-top: 0.25rem; color: var(--muted); font-size: 0.95rem; }
-
-/* Contact */
-.contact-card {
-	margin-top: 2rem;
-	background: var(--sheet);
-	border: 1px solid var(--rule);
-	border-radius: 12px;
-	padding: 1.75rem;
-	display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; justify-content: space-between;
-	max-width: 48rem;
-}
-.contact-card .number { font-family: var(--font-figures); font-size: var(--step-2); font-weight: 500; user-select: all; }
-.contact-card .small { color: var(--muted); font-size: 0.9rem; }
-
-footer { border-top: 1px solid var(--rule); }
-footer .wrap { padding-block: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content: space-between; color: var(--muted); font-size: 0.88rem; }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
-<header class="top">
+<header class="site-header">
 	<div class="wrap">
-		<a class="brand" href="#top"><img src="images/amana.svg" alt="" width="32" height="32">Amana ERP</a>
-		<nav aria-label="Main">
-			<a class="hide-small" href="#parts">What it does</a>
-			<a class="hide-small" href="#screens">Screens</a>
-			<a class="button" href="#contact">Contact us</a>
+		<a class="logo" href="/"><img src="/images/amana.svg" alt="" width="34" height="34">Amana</a>
+		<nav class="site-nav" aria-label="Products">
+			<a href="/church/"><span class="dot" style="background:var(--church)"></span>Church</a>
+			<a href="/school/"><span class="dot" style="background:var(--school)"></span>School</a>
+			<a href="/rental/"><span class="dot" style="background:var(--rental)"></span>Rental</a>
+			<a href="/garihub/"><span class="dot" style="background:var(--garihub)"></span>GariHub</a>
+			<a class="nav-contact" href="#contact">Contact us</a>
 		</nav>
 	</div>
 </header>
 
-<main id="top">
-	<section class="hero">
+<main>
+	<section class="hero-home">
 		<div class="wrap">
-			<div>
-				<p class="word"><b>amana</b> (Swahili): a trust; what is entrusted to someone's care</p>
-				<h1>The books of a church, a school and the property they run, in one place.</h1>
-				<p class="lede">Giving, school fees, rent, spending and building projects, with every M-Pesa and bank line matched to what it is. Built on ERPNext for Kenyan organisations, in Kenya shillings.</p>
+			<div class="hero-copy">
+				<p class="eyebrow">Software for Kenyan organisations</p>
+				<h1>Your books and your daily work, <em>in one place.</em></h1>
+				<p class="lede">Amana builds systems for churches, schools, landlords and car import yards. M-Pesa, bank statements, SMS and proper accounts come built in, in Kenya shillings.</p>
 				<div class="actions">
-					<a class="button" href="https://wa.me/254724206027" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
-					<span class="phone">0724 206 027</span>
+					<a class="btn btn-whatsapp" href="https://wa.me/254724206027" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Chat on WhatsApp</a>
+					<span class="phone-number">0724 206 027</span>
 				</div>
 			</div>
+			<div class="stage hero-stage">
+				<div class="shot"><img src="/images/church/today.webp" alt="Amana's Today screen for a church: giving this week, deposits to match and what needs attention" width="1280" height="800"></div>
+				<div class="phone"><img src="/images/garihub/home-phone.webp" alt="GariHub on a phone: the cars and tasks that need attention today" width="390" height="844"></div>
+			</div>
+		</div>
+		<nav class="product-strip wrap-full" aria-label="Products">
+			<a class="p-church" href="/church/"><b>Amana for Churches</b><span>Members, giving, services, events, building projects</span><span class="arrow">See Church →</span></a>
+			<a class="p-school" href="/school/"><b>Amana for Schools</b><span>Fees, billing, register, marks, report cards</span><span class="arrow">See School →</span></a>
+			<a class="p-rental" href="/rental/"><b>Amana for Rental</b><span>Buildings, units, tenants, leases, rent</span><span class="arrow">See Rental →</span></a>
+			<a class="p-garihub" href="/garihub/"><b>GariHub</b><span>Car import yards, from auction to sale</span><span class="arrow">See GariHub →</span></a>
+		</nav>
+	</section>
 
-			<div class="reading" aria-label="Example: how Amana reads bank and M-Pesa lines">
-				<header><span>Bank inbox</span><span>Example lines</span></header>
-				<div class="line">
-					<p class="raw">Pay Bill from 254*****7500 - KEVIN AKINYI Acc. Hebron · <span class="amt">2,100.00</span></p>
-					<p class="read"><span class="chip">Member giving</span><strong>Kevin Akinyi</strong><span class="note">Hebron district</span></p>
+	<section class="band tone-church">
+		<div class="wrap product-row">
+			<div>
+				<p class="eyebrow">Amana for Churches</p>
+				<h2>Every shilling given, accounted for.</h2>
+				<p class="lede">Members and districts, tithes and offerings, Sunday services, events and building projects, with each M-Pesa gift matched to the member who gave it.</p>
+				<ul class="ticks">
+					<li>The member register by district, with member cards and QR codes</li>
+					<li>Giving by member and district, and giving statements as thank-you letters</li>
+					<li>Sunday services with attendance and the cash counted</li>
+					<li>Building projects with pledges and a public page to give through</li>
+				</ul>
+				<a class="more" href="/church/">More about Amana for Churches</a>
+			</div>
+			<div class="shot"><img src="/images/church/giving.webp" alt="Giving by district and member" width="1280" height="800" loading="lazy"></div>
+		</div>
+	</section>
+
+	<section class="band soft tone-school">
+		<div class="wrap product-row flip">
+			<div>
+				<p class="eyebrow">Amana for Schools</p>
+				<h2>Fees billed, collected and followed up.</h2>
+				<p class="lede">Bill a whole term from the fee structures, see who owes by grade, and remind guardians by SMS. The classroom side is there too: the register, marks and report cards.</p>
+				<ul class="ticks">
+					<li>Term invoices from fee structures, with transport routes and extra charges</li>
+					<li>Sibling, staff child and bursary discounts taken off each invoice</li>
+					<li>Collections and who owes by grade, with reminders to guardians</li>
+					<li>The class register, marks, results and printed report cards</li>
+				</ul>
+				<a class="more" href="/school/">More about Amana for Schools</a>
+			</div>
+			<div class="shot"><img src="/images/school/students.webp" alt="Students and fees by grade: invoiced, collected and outstanding" width="1280" height="800" loading="lazy"></div>
+		</div>
+	</section>
+
+	<section class="band tone-rental">
+		<div class="wrap product-row">
+			<div>
+				<p class="eyebrow">Amana for Rental</p>
+				<h2>Every unit, every tenant, every month's rent.</h2>
+				<p class="lede">See each building's units at a glance, bill the month's rent in one go, and match each tenant's M-Pesa payment to their unit.</p>
+				<ul class="ticks">
+					<li>Buildings and units, let, vacant or under repair</li>
+					<li>Tenants and leases, with rent changes and deposits held</li>
+					<li>Monthly rent billing and who is behind</li>
+					<li>Tenant statements showing what is owed and how to pay</li>
+				</ul>
+				<a class="more" href="/rental/">More about Amana for Rental</a>
+			</div>
+			<div class="shot"><img src="/images/rental/properties.webp" alt="Rental properties: each building's units by state" width="1280" height="800" loading="lazy"></div>
+		</div>
+	</section>
+
+	<section class="band soft tone-garihub">
+		<div class="wrap product-row flip">
+			<div>
+				<p class="eyebrow">GariHub, by Amana</p>
+				<h2>Every car, from the auction in Japan to the buyer's keys.</h2>
+				<p class="lede">GariHub runs a car import yard around one file per car: what it cost to land, where it is, and what it sold for.</p>
+				<ul class="ticks">
+					<li>A car file for each chassis number, with stage, documents and costs</li>
+					<li>Landed cost per car: the price in yen, freight, duty and clearing</li>
+					<li>Shipping, clearing at Mombasa, the yard and the sale in one place</li>
+					<li>KRA eTIMS, M-Pesa and Kenyan payroll built in</li>
+				</ul>
+				<a class="more" href="/garihub/">More about GariHub</a>
+			</div>
+			<div class="shot"><img src="/images/garihub/car-file.webp" alt="A GariHub car file: the car's stage, costs and documents" width="1280" height="800" loading="lazy"></div>
+		</div>
+	</section>
+
+	<section class="band kenya">
+		<div class="wrap">
+			<h2>Built for how money moves in Kenya.</h2>
+			<div class="kenya-grid">
+				<div>
+					<h3>M-Pesa Pay Bill and Till</h3>
+					<p>Payments to your own Pay Bill arrive in the books matched to the member, student, tenant or car.</p>
 				</div>
-				<div class="line">
-					<p class="raw">Pay Bill from 254*****3381 - GRACE WANJIRU Acc. 0142 · <span class="amt">15,000.00</span></p>
-					<p class="read"><span class="chip">School fees</span><strong>Isaac Ochieng</strong><span class="note">Adm 0142, Grade 3</span></p>
+				<div>
+					<h3>Bank statements</h3>
+					<p>Import the statement as your bank gives it. Each line comes with a suggestion of what it is; tick and post.</p>
 				</div>
-				<div class="line">
-					<p class="raw">Pay Bill from 254*****9021 - NEEMA SALON Acc. AX-01 · <span class="amt">13,000.00</span></p>
-					<p class="read"><span class="chip">Rent</span><strong>Neema Salon</strong><span class="note">Unit AX-01</span></p>
+				<div>
+					<h3>SMS to the people you serve</h3>
+					<p>Fee reminders to guardians, absence notes, and updates to members and customers.</p>
 				</div>
-				<div class="line">
-					<p class="raw">LEDGER FEE CHARGES · Equity Main Account · <span class="amt">(450.00)</span></p>
-					<p class="read"><span class="chip ok">Matched</span><strong>Bank charges</strong></p>
+				<div>
+					<h3>Proper accounts underneath</h3>
+					<p>Everything posts to ERPNext's ledger: trial balance, income and expenditure, balance sheet, budgets.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section" id="parts">
+	<section class="band">
 		<div class="wrap">
-			<p class="label">What it does</p>
-			<div>
-				<h2>Pick the parts you need</h2>
-				<p class="intro">Each part keeps its books in its own company, so the church, the school and the rental property each have their own accounts and reports. Banking, spending and accounts are always there.</p>
-				<div class="parts">
-					<article class="part">
-						<span class="tag">Part</span>
-						<h3>Church</h3>
-						<p>Members and districts, tithes and offerings, Sunday services and cash, events, visitors and giving statements.</p>
-					</article>
-					<article class="part">
-						<span class="tag">Part</span>
-						<h3>School</h3>
-						<p>Students, terms and fee structures, term billing, receipts, discounts and bursaries, the class register, marks and report cards.</p>
-					</article>
-					<article class="part">
-						<span class="tag">Part</span>
-						<h3>Rental</h3>
-						<p>Buildings and units, tenants and leases, monthly rent billing, deposits held and who is behind.</p>
-					</article>
-					<article class="part">
-						<span class="tag">Part</span>
-						<h3>Building projects</h3>
-						<p>Projects, materials and pledges, with public pledge pages people can give through.</p>
-					</article>
-					<article class="part">
-						<span class="tag">Part</span>
-						<h3>Parking</h3>
-						<p>Vehicles in and out, parking tickets and parking income.</p>
-					</article>
-					<article class="part">
-						<span class="tag">Always there</span>
-						<h3>Banking, spending, accounts</h3>
-						<p>The bank inbox, cash requisitions and supplier bills, budgets, and the financial statements.</p>
-					</article>
-				</div>
+			<div class="section-head">
+				<h2>How we work</h2>
+				<p class="lede">Each organisation gets its own system, set up with you.</p>
 			</div>
+			<ol class="steps">
+				<li><h3>Talk to us</h3><p>Tell us what you run, how big it is, and which banks and Pay Bills you use.</p></li>
+				<li><h3>Your own system</h3><p>Your own secure site, with your name and logo on the sign-in page.</p></li>
+				<li><h3>Bring in what you have</h3><p>Members, students, tenants or cars from Excel, and your opening balances from the old books.</p></li>
+				<li><h3>Your team starts work</h3><p>Each person signs in to what they do, on a computer or a phone.</p></li>
+			</ol>
 		</div>
 	</section>
 
-	<section class="section" id="screens">
+	<section class="band contact" id="contact">
 		<div class="wrap">
-			<p class="label">Screens</p>
 			<div>
-				<h2>One page for everyday work</h2>
-				<p class="intro">Treasurers, bursars and office staff work from a single screen that opens on what needs doing today.</p>
-				<div class="tabs" role="tablist" aria-label="Screens">
-					<button role="tab" id="tab-today" aria-controls="shot" aria-selected="true" data-shot="today">Today</button>
-					<button role="tab" id="tab-bank" aria-controls="shot" aria-selected="false" data-shot="bank">Bank inbox</button>
-					<button role="tab" id="tab-students" aria-controls="shot" aria-selected="false" data-shot="students">Students &amp; fees</button>
-					<button role="tab" id="tab-register" aria-controls="shot" aria-selected="false" data-shot="classroom-register">Class register</button>
-					<button role="tab" id="tab-report" aria-controls="shot" aria-selected="false" data-shot="report-card">Report card</button>
-					<button role="tab" id="tab-rental" aria-controls="shot" aria-selected="false" data-shot="rental">Rental</button>
-					<button role="tab" id="tab-accounts" aria-controls="shot" aria-selected="false" data-shot="accounts">Accounts</button>
-					<button role="tab" id="tab-setup" aria-controls="shot" aria-selected="false" data-shot="setup">Setup</button>
-				</div>
-				<div class="screen" id="shot" role="tabpanel" aria-labelledby="tab-today">
-					<figure>
-						<div class="shot"><img id="shot-img" src="images/today.png" alt="The Today screen: deposits to match, giving this week, rent overdue and a list of what needs attention" width="1280" height="764"></div>
-						<figcaption id="shot-caption"><b>Today.</b> What needs doing, most urgent first: bank lines to match, overdue rent and bills, idle cash floats and visitors to follow up.</figcaption>
-					</figure>
-				</div>
-				<p class="sample-note">All screens show made-up sample books.</p>
+				<h2>Let's talk about your organisation.</h2>
+				<p class="lede">Pricing depends on what you need. Call or send a WhatsApp message and we'll take it from there.</p>
 			</div>
-		</div>
-	</section>
-
-	<section class="section" id="kenya">
-		<div class="wrap">
-			<p class="label">Made for Kenya</p>
-			<div>
-				<h2>Built around how money arrives here</h2>
-				<div class="facts">
-					<div class="fact">
-						<h3>M-Pesa and bank statements</h3>
-						<p>Import a statement as the bank gives it. Amana reads each narration, suggests what it is, and posts the ones you tick together.</p>
-					</div>
-					<div class="fact">
-						<h3>Your own Pay Bill</h3>
-						<p>Payments to the organisation's own Pay Bill or Till can arrive in the books as they happen, matched by member, admission or unit number.</p>
-					</div>
-					<div class="fact">
-						<h3>Texts to guardians and members</h3>
-						<p>Remind guardians who owe and tell them when a child is absent, by SMS or email, straight from the screen you are on.</p>
-					</div>
-					<div class="fact">
-						<h3>Your financial year</h3>
-						<p>A church year from October and a school year from January can run side by side, each part on its own year.</p>
-					</div>
-					<div class="fact">
-						<h3>Statements people can read</h3>
-						<p>Fee statements, tenant statements and giving letters, with what is owed by age and how to pay.</p>
-					</div>
-					<div class="fact">
-						<h3>Proper accounts underneath</h3>
-						<p>Everything posts to ERPNext's ledger: trial balance, income and expenditure, balance sheet, cash flow and budget against actual.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section" id="start">
-		<div class="wrap">
-			<p class="label">Getting started</p>
-			<div>
-				<h2>From first call to first receipt</h2>
-				<ol class="steps">
-					<li><div><h3>Tell us about your organisation</h3><p>Which parts you run, how many members, students or units, and which banks and Pay Bills you use.</p></div></li>
-					<li><div><h3>Your own site is set up</h3><p>Amana runs on its own ERPNext site for your organisation, with your name and logo on the sign-in page.</p></div></li>
-					<li><div><h3>Bring in what you have</h3><p>The setup screen takes members, students and tenants from Excel, and your opening balances from the old books.</p></div></li>
-					<li><div><h3>Your team signs in</h3><p>Each person gets a login for what they do: office manager, office staff or church leader.</p></div></li>
-				</ol>
-			</div>
-		</div>
-	</section>
-
-	<section class="section" id="contact">
-		<div class="wrap">
-			<p class="label">Contact</p>
-			<div>
-				<h2>Ask us about Amana for your organisation</h2>
-				<p class="intro">Pricing depends on the parts you use. Call or send a WhatsApp message and we will take it from there.</p>
-				<div class="contact-card">
-					<div>
-						<p class="small">Call or WhatsApp</p>
-						<p class="number">0724 206 027</p>
-					</div>
-					<div class="actions" style="margin-top:0">
-						<a class="button" href="https://wa.me/254724206027" target="_blank" rel="noopener">WhatsApp</a>
-						<a class="button plain" href="tel:+254724206027">Call</a>
-					</div>
+			<div class="contact-card">
+				<span class="label">Call or WhatsApp</span>
+				<span class="big">0724 206 027</span>
+				<div class="actions">
+					<a class="btn btn-whatsapp" href="https://wa.me/254724206027" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>WhatsApp</a>
+					<a class="btn btn-ghost" href="tel:+254724206027">Call</a>
 				</div>
 			</div>
 		</div>
 	</section>
 </main>
 
-<footer>
+<footer class="site-footer">
 	<div class="wrap">
-		<span>© 2026 Amana ERP</span>
-		<span>Built on ERPNext</span>
+		<div>
+			<h3>Amana</h3>
+			<p><i>amana</i> (Swahili): a trust; what is entrusted to someone's care.</p>
+		</div>
+		<div>
+			<h3>Products</h3>
+			<ul>
+				<li><a href="/church/">Amana for Churches</a></li>
+				<li><a href="/school/">Amana for Schools</a></li>
+				<li><a href="/rental/">Amana for Rental</a></li>
+				<li><a href="/garihub/">GariHub</a></li>
+			</ul>
+		</div>
+		<div>
+			<h3>Contact</h3>
+			<ul>
+				<li>Call or WhatsApp 0724 206 027</li>
+				<li><a href="https://wa.me/254724206027" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+			</ul>
+		</div>
+		<p class="fine"><span>© 2026 Amana</span><span>Built on ERPNext</span></p>
 	</div>
 </footer>
-
-<script>
-(function () {
-	var captions = {
-		"today": ["Today.", "What needs doing, most urgent first: bank lines to match, overdue rent and bills, idle cash floats and visitors to follow up.", "The Today screen: deposits to match, giving this week, rent overdue and a list of what needs attention"],
-		"bank": ["Bank inbox.", "Every unmatched bank and M-Pesa line with a suggestion. Tick the right ones and post them together.", "The bank inbox: M-Pesa and bank lines, each with a suggested match"],
-		"students": ["Students & fees.", "Billing, collections and who owes, by grade, with the collection rate for each.", "Students and fees: invoiced, collected and outstanding by grade"],
-		"classroom-register": ["Class register.", "Everyone starts as present. Mark who is absent, late or excused, then text their guardians.", "The class register for Grade 3 with present, absent and late marks"],
-		"report-card": ["Report card.", "Printed or emailed to the guardian, with marks, level, position, attendance and comments.", "A printed report card with subjects, marks, levels and comments"],
-		"rental": ["Rental.", "Occupancy, the rent roll, collections, deposits held and leases to act on.", "Rental overview: occupancy, rent roll, overdue rent and leases to act on"],
-		"accounts": ["Accounts.", "The chart of accounts, general ledger, budget and the financial statements.", "The Accounts screen: books, budget and financial statements"],
-		"setup": ["Setup.", "A new organisation picks its parts, companies, accounts and people, and Amana sets up the books.", "The setup screen: choosing the church, school and rental parts"]
-	};
-	var tabs = document.querySelectorAll(".tabs button");
-	var img = document.getElementById("shot-img");
-	var cap = document.getElementById("shot-caption");
-	var panel = document.getElementById("shot");
-	function show(btn) {
-		var key = btn.getAttribute("data-shot");
-		var c = captions[key];
-		tabs.forEach(function (t) { t.setAttribute("aria-selected", t === btn ? "true" : "false"); });
-		img.src = "images/" + key + ".png";
-		img.alt = c[2];
-		if (key === "report-card") { img.width = 820; img.height = 628; } else { img.width = 1280; img.height = 764; }
-		cap.innerHTML = "";
-		var b = document.createElement("b");
-		b.textContent = c[0];
-		cap.appendChild(b);
-		cap.appendChild(document.createTextNode(" " + c[1]));
-		panel.setAttribute("aria-labelledby", btn.id);
-	}
-	tabs.forEach(function (t) { t.addEventListener("click", function () { show(t); }); });
-})();
-</script>
 </body>
 </html>
