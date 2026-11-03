@@ -14,46 +14,44 @@
 <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
 <header class="site-header">
 	<div class="wrap">
-		<a class="logo" href="/"><img src="/images/brand/amana-logo-white.svg" alt="" width="52" height="34">Amana</a>
+		<a class="logo" href="/"><img src="/images/brand/amana-logo.svg" alt="" width="52" height="34">Amana</a>
 		<nav class="site-nav" aria-label="Products">
-			<a href="/church/"><span class="dot" style="background:var(--church)"></span>Church</a>
-			<a href="/school/" aria-current="page"><span class="dot" style="background:var(--school)"></span>School</a>
-			<a href="/rental/"><span class="dot" style="background:var(--rental)"></span>Rental</a>
-			<a href="/garihub/"><span class="dot" style="background:var(--garihub)"></span>GariHub</a>
-			<a class="nav-contact" href="#contact">Contact us</a>
+			<a href="/church/">Church</a>
+			<a href="/school/" aria-current="page">School</a>
+			<a href="/rental/">Rental</a>
+			<a href="/garihub/">GariHub</a>
 		</nav>
+		<div class="header-actions">
+			<a class="btn btn-dark btn-small" href="#contact">Talk to us</a>
+			<a class="btn btn-outline btn-small" href="https://wa.me/254724206027" target="_blank" rel="noopener">WhatsApp</a>
+		</div>
 	</div>
 </header>
 <main>
-	<section class="hero-product tone-school">
+	<section class="hero with-shot">
 		<div class="wrap">
-			<div>
-				<p class="eyebrow">Amana for Schools</p>
-				<h1>Fees billed, collected and followed up.</h1>
-				<p class="lede">Bill a whole term from the fee structures, see who owes by grade, and remind guardians by SMS. The classroom side is there too: the register, marks and report cards.</p>
-				<div class="actions">
-					<a class="btn btn-light" href="https://wa.me/254724206027" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Chat on WhatsApp</a>
-					<span class="phone-number">0724 206 027</span>
-				</div>
-			</div>
-			<div class="stage">
-				<div class="shot"><img src="/images/school/students-fees.webp" alt="Students and fees by grade: invoiced, paid, still owed and the collection rate" width="1280" height="800"></div>
-				<div class="phone"><img src="/images/school/students-fees-phone.webp" alt="The fees overview on a phone" width="390" height="844"></div>
+			<p class="eyebrow">Amana for Schools</p>
+			<h1>Fees billed, collected and followed up.</h1>
+			<p class="lede">Bill a whole term from the fee structures, see who owes by grade, and remind guardians by SMS. The classroom side is there too: the register, marks and report cards.</p>
+			<div class="actions">
+				<a class="btn btn-white" href="#contact">Talk to us</a>
+				<a class="btn btn-outline" href="#screens">See it at work</a>
 			</div>
 		</div>
 	</section>
+	<div class="hero-shot"><div class="wrap"><div class="frame"><img src="/images/school/students-fees.webp" alt="Students and fees by grade: invoiced, paid, still owed and the collection rate" width="1280" height="800"></div></div></div>
 
-	<section class="band soft tone-school">
+	<section class="band">
 		<div class="wrap">
 			<div class="section-head">
-				<h2>Made for the bursar and the classroom</h2>
+				<h2 class="light">Made for the bursar and the classroom</h2>
 				<p class="lede">Fees, discounts and report cards in one system, so the office and the teachers work from the same records.</p>
 			</div>
 			<div class="features">
@@ -70,48 +68,52 @@
 		</div>
 	</section>
 
-	<section class="band tone-school">
+	<section class="band grey" id="screens">
 		<div class="wrap">
 			<div class="section-head">
-				<h2>See it at work</h2>
+				<h2 class="light">See it at work</h2>
 				<p class="lede">Screens from Amana on made-up books, Sample School.</p>
 			</div>
 			<div class="screens">
 				<div class="screen-row">
-					<div class="shot"><img src="/images/school/marks.webp" alt="The marks sheet for a class and exam" width="1280" height="800" loading="lazy"></div>
 					<div><span class="num">01</span><h3>Marks, straight in</h3><p>One sheet per class and exam, a column per subject, typed straight in.</p></div>
+					<div class="frame"><img src="/images/school/marks.webp" alt="The marks sheet for a class and exam" width="1280" height="800" loading="lazy"></div>
 				</div>
 				<div class="screen-row">
-					<div class="shot"><img src="/images/school/report-card.webp" alt="A printed report card" width="1280" height="800" loading="lazy"></div>
 					<div><span class="num">02</span><h3>Report cards ready to print</h3><p>Each subject&#x27;s marks, term percentage and level, class position, and the class and head teacher&#x27;s comments.</p></div>
+					<div class="frame"><img src="/images/school/report-card.webp" alt="A printed report card" width="1280" height="800" loading="lazy"></div>
+				</div>
+				<div class="screen-row phone-row">
+					<div><span class="num">03</span><h3>On a phone too</h3><p>The fees overview on a phone.</p></div>
+					<div class="frame phone"><img src="/images/school/students-fees-phone.webp" alt="The fees overview on a phone" width="390" height="844" loading="lazy"></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="band mist">
+	<section class="band">
 		<div class="wrap">
-			<div class="section-head"><h2>Run a church or rental property too?</h2></div>
+			<h2 class="light">Run a church or rental property too?</h2>
 			<div class="others">
-				<a class="tone-church" href="/church/"><b>Amana for Churches</b><span>Members, giving, services, events, building projects</span></a>
-				<a class="tone-rental" href="/rental/"><b>Amana for Rental</b><span>Buildings, units, tenants, leases, rent</span></a>
-				<a class="tone-garihub" href="/garihub/"><b>GariHub</b><span>Car import yards, from auction to sale</span></a>
+				<a href="/church/"><b>Amana for Churches</b><span>Members, giving, services, pledges and building projects.</span><span class="go">Explore →</span></a>
+				<a href="/rental/"><b>Amana for Rental</b><span>Buildings, units, tenants, leases and the month's rent.</span><span class="go">Explore →</span></a>
+				<a href="/garihub/"><b>GariHub</b><span>Car import yards, from the auction to the buyer's keys.</span><span class="go">Explore →</span></a>
 			</div>
 		</div>
 	</section>
 
-	<section class="band contact" id="contact">
+	<section class="cta" id="contact">
 		<div class="wrap">
 			<div>
 				<h2>Let's talk about your school.</h2>
-				<p class="lede">Pricing depends on what you need. Call or send a WhatsApp message and we'll take it from there.</p>
+				<p>Pricing depends on what you need. Call or send a WhatsApp message and we'll take it from there.</p>
 			</div>
-			<div class="contact-card">
+			<div class="cta-side">
 				<span class="label">Call or WhatsApp</span>
-				<span class="big">0724 206 027</span>
+				<span class="number">0724 206 027</span>
 				<div class="actions">
-					<a class="btn btn-whatsapp" href="https://wa.me/254724206027" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>WhatsApp</a>
-					<a class="btn btn-ghost" href="tel:+254724206027">Call</a>
+					<a class="btn btn-gold" href="https://wa.me/254724206027" target="_blank" rel="noopener">Message us on WhatsApp</a>
+					<a class="btn btn-outline" href="tel:+254724206027">Call</a>
 				</div>
 			</div>
 		</div>
@@ -121,8 +123,8 @@
 <footer class="site-footer">
 	<div class="wrap">
 		<div>
-			<h3>Amana</h3>
-			<p><i>amana</i> (Swahili): a trust; what is entrusted to someone's care.</p>
+			<a class="logo" href="/"><img src="/images/brand/amana-logo-white.svg" alt="" width="52" height="34">Amana</a>
+			<p>Business automation. <i>Amana</i> is Swahili for a trust: what is entrusted to someone's care.</p>
 		</div>
 		<div>
 			<h3>Products</h3>
@@ -136,8 +138,8 @@
 		<div>
 			<h3>Contact</h3>
 			<ul>
-				<li>Call or WhatsApp 0724 206 027</li>
-				<li><a href="https://wa.me/254724206027" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+				<li><a href="tel:+254724206027">0724 206 027</a></li>
+				<li><a href="https://wa.me/254724206027" target="_blank" rel="noopener">WhatsApp</a></li>
 			</ul>
 		</div>
 		<p class="fine"><span>© 2026 Amana</span><span>Built on ERPNext</span></p>

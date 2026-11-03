@@ -14,46 +14,44 @@
 <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
 <header class="site-header">
 	<div class="wrap">
-		<a class="logo" href="/"><img src="/images/brand/amana-logo-white.svg" alt="" width="52" height="34">Amana</a>
+		<a class="logo" href="/"><img src="/images/brand/amana-logo.svg" alt="" width="52" height="34">Amana</a>
 		<nav class="site-nav" aria-label="Products">
-			<a href="/church/"><span class="dot" style="background:var(--church)"></span>Church</a>
-			<a href="/school/"><span class="dot" style="background:var(--school)"></span>School</a>
-			<a href="/rental/"><span class="dot" style="background:var(--rental)"></span>Rental</a>
-			<a href="/garihub/" aria-current="page"><span class="dot" style="background:var(--garihub)"></span>GariHub</a>
-			<a class="nav-contact" href="#contact">Contact us</a>
+			<a href="/church/">Church</a>
+			<a href="/school/">School</a>
+			<a href="/rental/">Rental</a>
+			<a href="/garihub/" aria-current="page">GariHub</a>
 		</nav>
+		<div class="header-actions">
+			<a class="btn btn-dark btn-small" href="#contact">Talk to us</a>
+			<a class="btn btn-outline btn-small" href="https://wa.me/254724206027" target="_blank" rel="noopener">WhatsApp</a>
+		</div>
 	</div>
 </header>
 <main>
-	<section class="hero-product tone-garihub">
+	<section class="hero with-shot">
 		<div class="wrap">
-			<div>
-				<p class="eyebrow"><img src="/images/garihub.svg" alt="">GariHub, by Amana</p>
-				<h1>Every car, from the auction to the buyer's keys.</h1>
-				<p class="lede">GariHub runs a Kenyan car import yard around one file per car: what it cost to land, where it is today, and what it sold for. Buying, shipping, clearing, the yard, sales and the books, in one place.</p>
-				<div class="actions">
-					<a class="btn btn-light" href="https://wa.me/254724206027" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Chat on WhatsApp</a>
-					<span class="phone-number">0724 206 027</span>
-				</div>
-			</div>
-			<div class="stage">
-				<div class="shot"><img src="/images/garihub/home.webp" alt="GariHub&#x27;s home screen: cash, cars on hand, cars on the way, this month&#x27;s profit and what needs attention" width="1280" height="800"></div>
-				<div class="phone"><img src="/images/garihub/car-file-phone.webp" alt="A car&#x27;s page on a phone: where it is, its next step and its photos" width="390" height="844"></div>
+			<p class="eyebrow">GariHub, by Amana</p>
+			<h1>Every car, from the auction to the buyer's keys.</h1>
+			<p class="lede">GariHub runs a Kenyan car import yard around one file per car: what it cost to land, where it is today, and what it sold for. Buying, shipping, clearing, the yard, sales and the books, in one place.</p>
+			<div class="actions">
+				<a class="btn btn-white" href="#contact">Talk to us</a>
+				<a class="btn btn-outline" href="#screens">See it at work</a>
 			</div>
 		</div>
 	</section>
+	<div class="hero-shot"><div class="wrap"><div class="frame"><img src="/images/garihub/home.webp" alt="GariHub&#x27;s home screen: cash, cars on hand, cars on the way, this month&#x27;s profit and what needs attention" width="1280" height="800"></div></div></div>
 
-	<section class="band soft tone-garihub">
+	<section class="band">
 		<div class="wrap">
 			<div class="section-head">
-				<h2>Built for the way a car yard works</h2>
+				<h2 class="light">Built for the way a car yard works</h2>
 				<p class="lede">Made for yards that bring in a hundred cars a month or more, mostly bought for stock.</p>
 			</div>
 			<div class="features">
@@ -73,56 +71,60 @@
 		</div>
 	</section>
 
-	<section class="band tone-garihub">
+	<section class="band grey" id="screens">
 		<div class="wrap">
 			<div class="section-head">
-				<h2>See it at work</h2>
+				<h2 class="light">See it at work</h2>
 				<p class="lede">Screens from GariHub on a made-up yard, Sample Motors.</p>
 			</div>
 			<div class="screens">
 				<div class="screen-row">
-					<div class="shot"><img src="/images/garihub/cars.webp" alt="The list of cars, each with its photo, price and stage" width="1280" height="800" loading="lazy"></div>
 					<div><span class="num">01</span><h3>Every car on its journey</h3><p>From the auction abroad to the handover: photos, prices and where each car is right now.</p></div>
+					<div class="frame"><img src="/images/garihub/cars.webp" alt="The list of cars, each with its photo, price and stage" width="1280" height="800" loading="lazy"></div>
 				</div>
 				<div class="screen-row">
-					<div class="shot"><img src="/images/garihub/car-costs.webp" alt="A car&#x27;s costs from purchase to landed cost" width="1280" height="800" loading="lazy"></div>
 					<div><span class="num">02</span><h3>Every shilling a car has cost</h3><p>The purchase price in yen and the auction fee, then freight, KRA duty, clearing and the panel shop, adding up to the landed cost.</p></div>
+					<div class="frame"><img src="/images/garihub/car-costs.webp" alt="A car&#x27;s costs from purchase to landed cost" width="1280" height="800" loading="lazy"></div>
 				</div>
 				<div class="screen-row">
-					<div class="shot"><img src="/images/garihub/sale.webp" alt="A car sale: price, payments, balance and profit" width="1280" height="800" loading="lazy"></div>
 					<div><span class="num">03</span><h3>The whole sale on one page</h3><p>Price, trade-in, payments so far, the balance to collect and the profit on the car.</p></div>
+					<div class="frame"><img src="/images/garihub/sale.webp" alt="A car sale: price, payments, balance and profit" width="1280" height="800" loading="lazy"></div>
 				</div>
 				<div class="screen-row phone-row">
-					<div class="phone solo"><img src="/images/garihub/tracking-phone.webp" alt="A buyer&#x27;s tracking page on a phone" width="390" height="844" loading="lazy"></div>
 					<div><span class="num">04</span><h3>Buyers follow their car</h3><p>A private page for each buyer: their car, where it is on its journey, and when it reaches Mombasa.</p></div>
+					<div class="frame phone"><img src="/images/garihub/tracking-phone.webp" alt="A buyer&#x27;s tracking page on a phone" width="390" height="844" loading="lazy"></div>
+				</div>
+				<div class="screen-row phone-row">
+					<div><span class="num">05</span><h3>On a phone too</h3><p>A car&#x27;s page on a phone: where it is, its next step and its photos.</p></div>
+					<div class="frame phone"><img src="/images/garihub/car-file-phone.webp" alt="A car&#x27;s page on a phone: where it is, its next step and its photos" width="390" height="844" loading="lazy"></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="band mist">
+	<section class="band">
 		<div class="wrap">
-			<div class="section-head"><h2>Amana also runs churches, schools and rental property</h2></div>
+			<h2 class="light">Amana also runs churches, schools and rental property</h2>
 			<div class="others">
-				<a class="tone-church" href="/church/"><b>Amana for Churches</b><span>Members, giving, services, events, building projects</span></a>
-				<a class="tone-school" href="/school/"><b>Amana for Schools</b><span>Fees, billing, register, marks, report cards</span></a>
-				<a class="tone-rental" href="/rental/"><b>Amana for Rental</b><span>Buildings, units, tenants, leases, rent</span></a>
+				<a href="/church/"><b>Amana for Churches</b><span>Members, giving, services, pledges and building projects.</span><span class="go">Explore →</span></a>
+				<a href="/school/"><b>Amana for Schools</b><span>Fees and billing, the class register, marks and report cards.</span><span class="go">Explore →</span></a>
+				<a href="/rental/"><b>Amana for Rental</b><span>Buildings, units, tenants, leases and the month's rent.</span><span class="go">Explore →</span></a>
 			</div>
 		</div>
 	</section>
 
-	<section class="band contact" id="contact">
+	<section class="cta" id="contact">
 		<div class="wrap">
 			<div>
 				<h2>Let's talk about your yard.</h2>
-				<p class="lede">Pricing depends on the size of the yard and what you need. Call or send a WhatsApp message and we'll take it from there.</p>
+				<p>Pricing depends on the size of the yard and what you need. Call or send a WhatsApp message and we'll take it from there.</p>
 			</div>
-			<div class="contact-card">
+			<div class="cta-side">
 				<span class="label">Call or WhatsApp</span>
-				<span class="big">0724 206 027</span>
+				<span class="number">0724 206 027</span>
 				<div class="actions">
-					<a class="btn btn-whatsapp" href="https://wa.me/254724206027" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>WhatsApp</a>
-					<a class="btn btn-ghost" href="tel:+254724206027">Call</a>
+					<a class="btn btn-gold" href="https://wa.me/254724206027" target="_blank" rel="noopener">Message us on WhatsApp</a>
+					<a class="btn btn-outline" href="tel:+254724206027">Call</a>
 				</div>
 			</div>
 		</div>
@@ -132,8 +134,8 @@
 <footer class="site-footer">
 	<div class="wrap">
 		<div>
-			<h3>Amana</h3>
-			<p><i>amana</i> (Swahili): a trust; what is entrusted to someone's care.</p>
+			<a class="logo" href="/"><img src="/images/brand/amana-logo-white.svg" alt="" width="52" height="34">Amana</a>
+			<p>Business automation. <i>Amana</i> is Swahili for a trust: what is entrusted to someone's care.</p>
 		</div>
 		<div>
 			<h3>Products</h3>
@@ -147,8 +149,8 @@
 		<div>
 			<h3>Contact</h3>
 			<ul>
-				<li>Call or WhatsApp 0724 206 027</li>
-				<li><a href="https://wa.me/254724206027" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+				<li><a href="tel:+254724206027">0724 206 027</a></li>
+				<li><a href="https://wa.me/254724206027" target="_blank" rel="noopener">WhatsApp</a></li>
 			</ul>
 		</div>
 		<p class="fine"><span>© 2026 Amana</span><span><a href="/garihub/photo-credits.html">Car photos: Wikimedia Commons, see credits</a></span><span>Built on ERPNext</span></p>
